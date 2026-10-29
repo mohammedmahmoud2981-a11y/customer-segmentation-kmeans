@@ -52,14 +52,31 @@ python customer_segmentation.py --demo   # synthetic data, to test the pipeline
 ```
 
 ## Results
-<!-- Fill this in after running on the real dataset -->
-- Best K (silhouette): `__`
-- Silhouette score: `__`
-- Scratch vs sklearn inertia: `__` vs `__`
 
-| Cluster | Avg Age | Avg Income | Avg Spending | Size | Segment |
+### Dataset summary
+- 200 customers, no missing values
+- Average age 38.9 (range 18-70)
+- Average annual income 60.6k$ (range 15k$-137k$)
+- Average spending score 50.2 (range 1-99)
+
+### Clustering
+K = 6 was selected automatically as the value with the highest silhouette score among K = 2 to 10.
+
+| Cluster | Avg Age | Avg Income (k$) | Avg Spending | Size | Segment |
 |---|---|---|---|---|---|
-| 0 | | | | | |
+| 0 | 32.7 | 86.5 | 82.1 | 39 | High income, high spending (VIP) |
+| 1 | 41.3 | 88.5 | 16.8 | 34 | High income, low spending (careful savers) |
+| 2 | 45.5 | 26.3 | 19.4 | 21 | Low income, low spending (budget) |
+| 3 | 56.3 | 54.3 | 49.1 | 45 | Older, mid income, mid spending |
+| 4 | 27.0 | 56.7 | 49.1 | 38 | Younger, mid income, mid spending |
+| 5 | 25.0 | 25.3 | 77.6 | 23 | Young, low income, high spending (impulsive) |
+
+### Interpretation
+- **Cluster 0 (VIP, 39 customers):** high income and high spending. The most valuable group for loyalty programs and premium offers.
+- **Cluster 1 (careful savers, 34):** the highest income in the dataset but very low spending. They have the most room to grow, so targeted promotions may convert them.
+- **Cluster 5 (impulsive, 23):** young customers with low income who spend heavily. Good targets for promotions and trend-driven campaigns.
+- **Cluster 2 (budget, 21):** low income and low spending; the least engaged group.
+- **Clusters 3 and 4:** nearly identical income and spending, separated mainly by age (about 56 vs 27). Together they make up 83 of the 200 customers, so age-appropriate marketing is the main lever for them.
 
 ![Choosing K](outputs_segmentation/choose_k.png)
 ![Clusters](outputs_segmentation/clusters.png)
