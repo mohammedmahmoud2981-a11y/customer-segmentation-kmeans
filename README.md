@@ -78,8 +78,8 @@ K = 6 was selected automatically as the value with the highest silhouette score 
 - **Cluster 2 (budget, 21):** low income and low spending; the least engaged group.
 - **Clusters 3 and 4:** nearly identical income and spending, separated mainly by age (about 56 vs 27). Together they make up 83 of the 200 customers, so age-appropriate marketing is the main lever for them.
 
-![Choosing K](outputs_segmentation/choose_k.png)
-![Clusters](outputs_segmentation/clusters.png)
+![Choosing K](clusters.png)
+![Clusters](choose_k.png)
 
 ## Key takeaways
 - Scaling matters: without it, income dominates the distance.
